@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import cors from 'cors';
+import mongoose from 'mongoose';
 
 const app = express();
 
@@ -17,6 +18,12 @@ app.use(bodyParser.json());
 
 const servidor = http.createServer(app);
 
+const MONGODB_URL = "mongodb+srv://brunovonkoln:Cel@83191984@cluster0.nms6aua.mongodb.net/typescript_api?retryWrites=true&w=majority"
+
 servidor.listen(8080, () => {
     console.log("Servidor rodando no endereço http://localhost:8080/")
 })
+
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URL);
+mongoose.connection.on("error", (erro: Error) => console.log(erro))
