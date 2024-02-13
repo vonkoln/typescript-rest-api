@@ -5,6 +5,9 @@ import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import rotas from './rotas'
+
+
 
 const app = express();
 
@@ -22,8 +25,14 @@ const MONGODB_URL = "mongodb+srv://bruno2:fU6F4B46Cm5oM1Ya@cluster0.nms6aua.mong
 
 servidor.listen(8080, () => {
     console.log("Servidor rodando no endereço http://localhost:8080/")
+
+    const senha_hash = autenticacao("abc", "123456");
+
+    console.log(senha_hash)
 })
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URL);
 mongoose.connection.on("error", (erro: Error) => console.log(erro))
+
+app.use("/", rotas());

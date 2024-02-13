@@ -13,7 +13,7 @@ const UsuarioSchema = new mongoose.Schema({
 export const UsuarioModelo = mongoose.model("Usuario", UsuarioSchema);
 
 export const selecionarUsuarios = () => UsuarioModelo.find();
-export const selecionarUsuarioPeloEMail = (email: string) => UsuarioModelo.findOne({email});
+export const selecionarUsuarioPeloEmail = (email: string) => UsuarioModelo.findOne({email});
 export const selecionarUsuarioPeloToken = (sessaoToken: string) => UsuarioModelo.findOne({'autenticacao.sessaoToken': sessaoToken});
 export const selecionarUsuarioPeloId = (id: string) => UsuarioModelo.findById(id);
 export const criarUsuario = (dados: Record<string, any>) => new UsuarioModelo(dados).save().then((usuario) => usuario.toObject());
