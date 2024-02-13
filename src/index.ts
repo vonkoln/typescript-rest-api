@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 const servidor = http.createServer(app);
 
-const MONGODB_URL = "mongodb+srv://bruno2:fU6F4B46Cm5oM1Ya@cluster0.nms6aua.mongodb.net/typescript_api?retryWrites=true&w=majority"
+const MONGODB_URL = "mongodb+srv://bruno2:fU6F4B46Cm5oM1Ya@cluster0.nms6aua.mongodb.net/typescript_api?retryWrites=true&w=majority";
 
 servidor.listen(8080, () => {
     console.log("Servidor rodando no endereço http://localhost:8080/")
